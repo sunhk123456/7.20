@@ -72,7 +72,7 @@ wheel.prototype = {
     },
 
     getWindow() {
-        this.wins.style.cssText = "width:100%;height:" + imgSize[1] + " px ; overfLow: hidden; position: relative;";
+        this.wins.style.cssText = "width:100%;height:" + this.imgSize[1] + " px ; overfLow: hidden; position: relative;";
 
 
 
@@ -81,22 +81,22 @@ wheel.prototype = {
 
         // 添加容器
         this.box = document.createElement("div")
-        this.box.style.cssText = "width:" + imgLength * 100 + "%;height:100%;border:1px solid red;"
-        this.wins.appendChild(box);
+        this.box.style.cssText = "width:" + this.imgLength * 100 + "%;height:100%;border:1px solid red;"
+        this.wins.appendChild(this.box);
 
 
     },
     createList() {
         for (var i = 0; i < this.imgLength; i++) {
             this.divList = document.createElement("div");
-            this.divList.style.cssText = `float:left;width:${100/imgLength}%;height:100%;background:${opts.imgColor[i]}`;
+            this.divList.style.cssText = `float:left;width:${100/this.imgLength}%;height:100%;background:${this.opts.imgColor[i]}`;
 
             this.link = document.createElement("a");
-            this.link.href = opts.links[i];
+            this.link.href = this.opts.links[i];
             // console.log(imgSize);
-            this.link.style.cssText = "width:" + imgSize[0] + " px ; height:" + imgSize[1] + "px ;display: block ;margin: auto ; background:url(" + opts.imgs[i] + ") no-repeat 0 0"
-            this.divList.appendChild(link);
-            this.box.appendChild(divList);
+            this.link.style.cssText = "width:" + this.imgSize[0] + " px ; height:" + this.imgSize[1] + "px ;display: block ;margin: auto ; background:url(" + this.opts.imgs[i] + ") no-repeat 0 0"
+            this.divList.appendChild(this.link);
+            this.box.appendChild(this.divList);
         }
 
 
@@ -108,13 +108,13 @@ wheel.prototype = {
             // btnBox.style.cssText = "width:200px;height:200px;position:relative;bottom:" + opts.btnPosition[1] + "px;left:0;right:0;background:#000"
 
         // btnBox.style.cssText = " width:300px;text-align: center;height: 20px;position: absolute;left: 0;right: 0;margin: auto;bottom:" + btnPos[1] + "px;"
-        this.btnBox.style.cssText = `width:300px;text-align: center;height: 20px;position: absolute;left: 0;right: 0;margin: auto;bottom:${btnPos[1]}px;`
+        this.btnBox.style.cssText = `width:300px;text-align: center;height: 20px;position: absolute;left: 0;right: 0;margin: auto;bottom:${this.btnPos[1]}px;`
         var btns = []
-        for (var i = 0; i < imgLength - 1; i++) {
+        for (var i = 0; i < this.imgLength - 1; i++) {
             if (i == 0) {
-                var bgColor = btnActive
+                this.bgColor = this.btnActive
             } else {
-                var bgColor = btnColor
+                this.bgColor = this.btnColor
             }
             this.btn = document.createElement("div")
                 // btn.style.cssText = "width:20px;height:20px;background:" + bgColor + ";"
@@ -122,20 +122,20 @@ wheel.prototype = {
 width: 60px;
 height: 2px;
 float:left;
-background: ${bgColor};
+background: ${this.bgColor};
 cursor: pointer;
 margin-right: 8px;
 border-radius: 0;`
-            this.btnBox.appendChild(btn)
-            btns.push(btn)
+            this.btnBox.appendChild(this.btn)
+            btns.push(this.btn)
         }
         this.btns = btns;
 
-        this.wins.appendChild(btnBox);
+        this.wins.appendChild(this.btnBox);
 
 
 
-        console.log(btns)
+        console.log(this.btns)
 
 
 
@@ -156,7 +156,7 @@ border-radius: 0;`
         // var win = document.getElementsByClassName("banner-lb")[0]
         this.long = parseInt(getComputedStyle(this.wins, null).width)
 
-        console.log(long)
+        console.log(this.long)
         var num = 0;
 
         function move() {
@@ -171,8 +171,8 @@ border-radius: 0;`
                 })
                 num = 0;
             } else {
-                animate(box, {
-                    "marginLeft": -long * num
+                animate(this.box, {
+                    "marginLeft": -this.long * num
                 }, 500)
 
             }
@@ -191,7 +191,7 @@ border-radius: 0;`
             this.btns[i].onclick = function() {
 
                 num = i;
-                animate(box, {
+                animate(this.box, {
                         "margin-left": -num * long
                     },
                     500)
