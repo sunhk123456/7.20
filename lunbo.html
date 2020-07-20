@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .banner {
+            height: 1000px;
+            /* position: absolute; */
+        }
+    </style>
+</head>
+
+<body>
+    <div class="banner">
+        <div class="window"></div>
+    </div>
+    <!-- <script src="./wheel.js"></script> -->
+    <!-- <script src="1.js"></script> -->
+    <!-- <script src="./duixian.js"></script> -->
+
+    <script src="duixiang.js">
+    </script>
+    <script src="./aniMath.js"></script>
+    <script>
+        wheel(".window", {
+            imgs: ["img/uek1.jpg", "img/uek2.jpg", "img/uek3.jpg"],
+            // links: ["http://baidu.com", "http://baidu.com", "http://baidu.com"],
+            links: ["#", "#", "#"],
+            imgColor: ["red", "blue", "green"],
+            imgSize: [1130, 400],
+            btnColor: "pink",
+            btnActive: "blue",
+            btnPosition: ["center", "10"]
+
+
+
+        }, {
+            time: 3,
+            runStyle: "Tween.Linear"
+        })
+    </script>
+</body>
+
+</html>
